@@ -68,27 +68,26 @@ const getRandomLengthArrayOfUniqueValues = (uniqueValues) => {
   return randomArray;
 };
 
-const makeCounter = (start) => {
-  let currentCount = start;
-  return function() {
-    return currentCount++;
-  };
+const makeCounter = (counterInitialValue) => {
+  let currentCount = counterInitialValue;
+  return () => currentCount++;
 };
 
 // Начинаем собирать временные данные.
-const avatarCounter = makeCounter(1);
+const adsCounter = makeCounter(1);
 
 const getAd = () => {
   const chekinChekoutTime = CHECKIN_CHECKOUT_TIMES[getRandomPositiveInteger(0, CHECKIN_CHECKOUT_TIMES.length - 1)];
   const currentLatitude = getRandomPositiveFloat(LAT_FROM, LAT_BEFORE, 5);
   const currentLongitude = getRandomPositiveFloat(LNG_FROM, LNG_BEFORE, 5);
+  const adsCurrentCounter = adsCounter();
 
   return {
     author: {
-      avatar: `img/avatars/user${avatarCounter().toString().padStart(2, '0')}.png`,
+      avatar: `img/avatars/user${adsCurrentCounter.toString().padStart(2, '0')}.png`,
     },
     offer: {
-      title: 'Жилье в Токио!',
+      title: `Объявление № ${adsCurrentCounter}`,
       address: `${currentLatitude}, ${currentLongitude}`,
       price: getRandomPositiveInteger(0, 100000),
       type: HOUSING_TYPES[getRandomPositiveInteger(0, HOUSING_TYPES.length - 1)],
@@ -97,7 +96,7 @@ const getAd = () => {
       checkin: chekinChekoutTime,
       checkout: chekinChekoutTime,
       features: getRandomLengthArrayOfUniqueValues(HOUSING_FEATURES),
-      description: 'Просторно, тепло и светло',
+      description: `Описание объявления № ${adsCurrentCounter}`,
       photos: getRandomLengthArrayOfUniqueValues(HOUSING_PHOTOS),
     },
     location: {
