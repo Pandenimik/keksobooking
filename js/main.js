@@ -1,3 +1,3 @@
-import { createMoсkData } from './mock-data.js';
+import { rendercards } from './cards.js';
 
-console.log(createMoсkData());
+rendercards();
