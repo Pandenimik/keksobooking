@@ -2,7 +2,7 @@ import { createMoсkData } from './mock-data.js';
 import { numWord } from './util.js';
 
 const rendercards = () => {
-  const typesMap = {
+  const TYPES_MAP = {
     flat: 'Квартира',
     bungalow: 'Бунгало',
     house: 'Дом',
@@ -23,7 +23,7 @@ const rendercards = () => {
     cardElement.querySelector('.popup__title').textContent = title;
     cardElement.querySelector('.popup__text--address').textContent = address;
     cardElement.querySelector('.popup__text--price').textContent = `${price} ₽/ночь`;
-    cardElement.querySelector('.popup__type').textContent = typesMap[type];
+    cardElement.querySelector('.popup__type').textContent = TYPES_MAP[type];
     cardElement.querySelector('.popup__text--capacity').textContent = `${rooms} ${numWord(rooms, ['комната', 'комнаты', 'комнат'])} для ${guests} ${numWord(guests, ['гостя', 'гостей', 'гостей'])}`;
     cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${checkin}, выезд до ${checkout}`;
     cardElement.querySelector('.popup__description').textContent = description;
