@@ -1,5 +1,7 @@
 import { rendercards } from './cards.js';
-import { toggleForms } from './form.js';
+import { toggleForms, syncsTypeAndPriceInputs } from './form.js';
 
 rendercards();
+syncsTypeAndPriceInputs();
+toggleForms();
 toggleForms();
